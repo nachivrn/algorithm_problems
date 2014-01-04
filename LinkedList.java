@@ -166,7 +166,90 @@ public class LinkedList {
         return reverse(result);
     }
 
+    static Node sortedMerge(Node list1, Node list2) {
+        Node currentResult = null;
+        Node result = null;
+        Node current;
+        if (list1 == null)
+            return list2;
+        if (list2 == null)
+            return list1;
+        while (list1 != null && list2 != null) {
+            if (list1.getData() > list2.getData()) {
+                current = list2;
+                list2 = list2.next;
+                current.next = null;
+            } else {
+                current = list1;
+                list1 = list1.next;
+                current.next = null;
+            }
+            if (currentResult == null) {
+                currentResult = current;
+                result = current;
+            } else {
+                currentResult.next = current;
+                currentResult = currentResult.next;
+            }
+        }
+        while (list1 != null) {
+            current = list1;
+            list1 = list1.next;
+            current.next = null;
+            currentResult.next = current;
+            currentResult = currentResult.next;
+        }
+        while (list2 != null) {
+            current = list2;
+            list2 = list2.next;
+            current.next = null;
+            currentResult.next = current;
+            currentResult = currentResult.next;
+        }
+        return result;
+    }
+
+    static Node mergeSort(Node head) {
+        if (head == null)
+            return null;
+        if (head.next == null)
+            return head;
+        Node[] nodeArr = frontBackSplit(head);
+        Node left = nodeArr[0];
+        Node right = nodeArr[1];
+        left = mergeSort(left);
+        right = mergeSort(right);
+        return sortedMerge(left, right);
+    }
+
+    static Node sortedIntersect(Node list1, Node list2) {
+        Node result = null;
+        Node currentResult = null;
+        Node current = null;
+        while (list1 != null && list2 != null) {
+            if (list1.getData() > list2.getData()) {
+                list2 = list2.next;
+            } else if  (list1.getData() < list2.getData()){
+                list1 = list1.next;
+            } else {
+                current = list1;
+                list1 = list1.next;
+                list2 = list2.next;
+                current.next = null;
+                if (currentResult == null) {
+                    currentResult = current;
+                    result = currentResult;
+                } else {
+                    currentResult.next = current;
+                    currentResult = currentResult.next;
+                }
+            }
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
+        //Test cases        
         Node head = buildOneTwoThree();
         head = sortedInsert(head, new Node(5));
         head = sortedInsert(head, new Node(4));
@@ -184,22 +267,29 @@ public class LinkedList {
         Node list1 = buildFromIntArr(new int[]{1, 3, 5, 7});
         Node list2 = buildFromIntArr(new int[]{2, 4, 6});
         Node result = shuffleMerge(list1, list2);
-
+        list1 = buildFromIntArr(new int[]{1, 3, 5, 7});
+        list2 = buildFromIntArr(new int[]{2, 4, 6});
+        result = sortedMerge(list1, list2);
+        list1 = buildFromIntArr(new int[]{3, 4, 5, 7});
+        list2 = buildFromIntArr(new int[]{1});
+        result = sortedMerge(list1, list2);
+        list1 = buildFromIntArr(new int[]{2, 5, 9, 4, 3, 1, 6});
+        result = mergeSort(list1);
+        list1 = buildFromIntArr(new int[]{1, 3, 4, 7, 8, 9});
+        list2 = buildFromIntArr(new int[]{2, 4, 6, 8});
+        result = sortedIntersect(list1, list2);
     }
 
     static class Node {
         Node next;
         private int data;
-
         public Node(int data) {
             this.data = data;
         }
-
         public Node(int data, Node ref) {
             this.data = data;
             this.next = ref;
         }
-
         public int getData() {
             return data;
         }
