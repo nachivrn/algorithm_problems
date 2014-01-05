@@ -248,37 +248,6 @@ public class LinkedList {
         return result;
     }
 
-    public static void main(String[] args) {
-        //Test cases        
-        Node head = buildOneTwoThree();
-        head = sortedInsert(head, new Node(5));
-        head = sortedInsert(head, new Node(4));
-        head = sortedInsert(head, new Node(0));
-        head = recursiveReverse(head);
-        head = reverse(head);
-        head = insertSort(head);
-        Node[] splitArr = frontBackSplit(head);
-        splitArr = frontBackSplit(new Node(7, new Node(8, new Node(9, null))));
-        Node firstList = buildOneTwoThree();
-        Node secondList = buildOneTwoThree();
-        moveNode(secondList, firstList);
-        head = buildFromIntArr(new int[]{1, 2, 1, 2, 1});
-        alternateSplit(head);
-        Node list1 = buildFromIntArr(new int[]{1, 3, 5, 7});
-        Node list2 = buildFromIntArr(new int[]{2, 4, 6});
-        Node result = shuffleMerge(list1, list2);
-        list1 = buildFromIntArr(new int[]{1, 3, 5, 7});
-        list2 = buildFromIntArr(new int[]{2, 4, 6});
-        result = sortedMerge(list1, list2);
-        list1 = buildFromIntArr(new int[]{3, 4, 5, 7});
-        list2 = buildFromIntArr(new int[]{1});
-        result = sortedMerge(list1, list2);
-        list1 = buildFromIntArr(new int[]{2, 5, 9, 4, 3, 1, 6});
-        result = mergeSort(list1);
-        list1 = buildFromIntArr(new int[]{1, 3, 4, 7, 8, 9});
-        list2 = buildFromIntArr(new int[]{2, 4, 6, 8});
-        result = sortedIntersect(list1, list2);
-    }
 
     static class Node {
         Node next;
