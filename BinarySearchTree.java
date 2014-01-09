@@ -92,8 +92,7 @@ public class BinarySearchTree {
                 isBSTRecur(node.right, node.data, max));
     }
 
-
-    public boolean sameTree(Node node1, Node node2) {
+    private boolean sameTree(Node node1, Node node2) {
         if (node1 == null && node2 == null)
             return true;
         if (node1 == null || node2 == null ||
@@ -150,7 +149,6 @@ public class BinarySearchTree {
         path.remove(path.size() - 1);
     }
 
-
     private void getPathSum(Node node, int sum, List<Integer> pathSum) {
         if (node == null) {
             return;
@@ -197,7 +195,6 @@ public class BinarySearchTree {
         return Math.max(height(node.left), height(node.right)) + 1;
     }
 
-
     private int size(Node node) {
         if (node == null) {
             return 0;
@@ -206,19 +203,17 @@ public class BinarySearchTree {
     }
 
     private boolean lookup(Node node, int data) {
-        boolean found = false;
         if (node == null) {
             return false;
         } else {
             if (node.data == data) {
-                found = true;
+                return true;
             } else if (node.data > data) {
-                lookup(node.left, data);
+                return lookup(node.left, data);
             } else {
-                lookup(node.right, data);
+                return lookup(node.right, data);
             }
-        }
-        return found;
+        }        
     }
 
     private Node insert(Node node, int data) {
