@@ -1,5 +1,3 @@
-package org.nachi.interviews;
-
 import java.util.ArrayList;
 import java.util.List;
 
