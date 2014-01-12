@@ -38,7 +38,6 @@ class AStar {
                 }
             }
         }
-        //Should not reach here.
         throw new RuntimeException("Path cannot be found.");
     }
 
