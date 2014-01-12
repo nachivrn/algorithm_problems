@@ -3,7 +3,7 @@ import java.util.*;
 /** Find the closest coffee shop given a location in x,y co-ordinates **/
 
 class AStar {
-    private TreeSet<Vertex> openSet = new TreeSet<Vertex>(new VertexComparator());
+    private TreeSet<Vertex> openSet = new TreeSet<Vertex>(new FScoreComparator());
     private Set<Vertex> closedSet = new HashSet<Vertex>();
 
     List<Integer> aStar(Graph map, int start, int goal) {
@@ -255,7 +255,7 @@ class Vertex {
     }
 }
 
-class VertexComparator implements Comparator {
+class FScoreComparator implements Comparator {
     public int compare(Object o1, Object o2) {
         Vertex v1 = (Vertex) o1;
         Vertex v2 = (Vertex) o2;
@@ -363,9 +363,4 @@ public class CoffeeShop {
             }
         }
     }
-
 }
-
-
-
-
