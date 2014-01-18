@@ -6,7 +6,6 @@ public class PrintNPrimes {
         if (count == 0) {
             return;
         }
-        System.out.print(nextPrime + ", ");
         if (count == 1) {
             System.out.print(nextPrime);
             return;
@@ -45,5 +44,3 @@ public class PrintNPrimes {
         printFirstNPrimeNumbers(Integer.parseInt(args[0]));
     }
 }
-
-
