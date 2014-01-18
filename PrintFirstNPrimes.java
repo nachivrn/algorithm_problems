@@ -1,6 +1,6 @@
 // count = 3, prints 2,3,5
 // count = 4, prints 2,3,5,7
-public class PrintNPrimes {
+public class PrintFirstNPrimes {
     static void printFirstNPrimeNumbers(int count) {
         int nextPrime = 2;
         if (count == 0) {
