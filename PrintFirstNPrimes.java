@@ -1,20 +1,28 @@
-public class PrintFirstNPrimes {
+// count = 3, prints 2,3,5
+// count = 4, prints 2,3,5,7
+public class PrintNPrimes {
     static void printFirstNPrimeNumbers(int count) {
-        System.out.print(2 + ", ");
-        if (count == 1) {
+        int nextPrime = 2;
+        if (count == 0) {
             return;
         }
-        int lastPrime = 2;
+        System.out.print(nextPrime + ", ");
+        if (count == 1) {
+            System.out.print(nextPrime);
+            return;
+        } else {
+            System.out.print(nextPrime + ", ");
+        }
         for (int i = 1; i < count; i++) {
             while (true) {
-                lastPrime = lastPrime + 1;
-                if (isComposite(lastPrime)) {
+                nextPrime = nextPrime + 1;
+                if (isComposite(nextPrime)) {
                     continue;
                 } else {
                     if (i == count) {
-                        System.out.println(lastPrime);
+                        System.out.println(nextPrime);
                     } else {
-                        System.out.print(lastPrime + ", ");
+                        System.out.print(nextPrime + ", ");
                     }
                     break;
                 }
@@ -37,3 +45,5 @@ public class PrintFirstNPrimes {
         printFirstNPrimeNumbers(Integer.parseInt(args[0]));
     }
 }
+
+
