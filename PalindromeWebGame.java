@@ -124,7 +124,7 @@ public class PalindromeWebGame extends Thread {
         MultiPlayerTest test = new MultiPlayerTest(queue);
         game.start();
         test.start();
-        //Wait for threads to finish.
+        //Wait for tests to finish.
         try {
             Thread.sleep(1000);
         } catch (InterruptedException ie) {
