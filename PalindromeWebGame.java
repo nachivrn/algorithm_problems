@@ -223,7 +223,7 @@ class PalindromeUtil {
     }
 }
 
-// Test class to show multiple threads accessing the player state.
+// Test class
 class MultiPlayerTest extends Thread {
 
     protected BlockingQueue queue = null;
